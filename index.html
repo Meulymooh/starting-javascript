@@ -101,22 +101,55 @@
         <script>
 
 // Variables for fields to be filled in
+var input = document.getElementsByTagName("input");
 var inputName = document.getElementById("name");
 var inputPizza = document.getElementById("pizza");  
 var inputSize = document.getElementById("size");
 var inputRemarks = document.getElementById("remarks");
 
 
+// Variables for containers
+var table = document.getElementById("pizzaOrders");
+var emptyRow = document.getElementById('emptyRow')
+
 // Creating event (click enter)
 document.getElementById("emptyRow").addEventListener("keyup", enter);
 
+// Extend form
+
+function addNewFields() {
+  var row = table.insertRow(-1);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+
+  var newInputName = inputName.cloneNode(true);
+  var newInputPizza = inputPizza.cloneNode(true);
+  var newInputSize = inputSize.cloneNode(true);
+  var newInputRemarks = inputRemarks.cloneNode(true);
+
+  newInputName.value = "";
+  newInputPizza.value = "";
+  newInputSize.value = "";
+  newInputRemarks.value = "";
+
+  cell1.appendChild(newInputName);
+  cell2.appendChild(newInputPizza);
+  cell3.appendChild(newInputSize);
+  cell4.appendChild(newInputRemarks);
+}
+
+
+// When press enter
 function enter(event) {
     if (event.keyCode == 13) {
         if (inputName.value == '' || inputPizza.value == '' || inputSize.value == '' || inputRemarks.value == '')
         {
-        toastr["error"]("Please fill in all fields.", "Error!");
-        }
-    }   
+        toastr["error"]("Please fill in all fields.", "Error!"); }
+        else  { 
+            addNewFields(); }
+    }
 }
 
 
