@@ -57,6 +57,8 @@
                 document.getElementsByClassName('greetingsBoxHolder')[0].getElementsByTagName('h3')[0].innerHTML = message;
             }
 
+
+
         </script>
     </div>
     <!-- END OF Part 1 -->
@@ -97,7 +99,30 @@
             </table>
         </div>
         <script>
-            // Write your code here
+
+// Variables for fields to be filled in
+var inputName = document.getElementById("name");
+var inputPizza = document.getElementById("pizza");  
+var inputSize = document.getElementById("size");
+var inputRemarks = document.getElementById("remarks");
+
+
+// Creating event (click enter)
+document.getElementById("emptyRow").addEventListener("keyup", enter);
+
+function enter(event) {
+    if (event.keyCode == 13) {
+        if (inputName.value == '' || inputPizza.value == '' || inputSize.value == '' || inputRemarks.value == '')
+        {
+        toastr["error"]("Please fill in all fields.", "Error!");
+        }
+    }   
+}
+
+
+
+
+
         </script>
     </div>
     <!-- END OF Part 2 -->
