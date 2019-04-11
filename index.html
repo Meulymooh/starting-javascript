@@ -192,30 +192,68 @@ function removeText() {
 	}
 }
 
+// Create variable
+var ingredients = ["Pasta", "Tomato sauce", "Cheese"];
+var fLen = ingredients.length;
+
+var ingredientInput = document.createElement("input");
+	ingredientInput.setAttribute("type", "text");
+	ingredientInput.placeholder = "Choose your final ingredient";
+
+var listHolder = document.getElementById("listHolder");
+
 // Create list
 function createList() {
-	var ingredients, text, fLen, i;
-	ingredients = ["Pasta", "Tomato sauce", "Cheese"];
-	fLen = ingredients.length;
-
 	text = "<ul>";
 	for (i = 0; i < fLen; i++) {
   	text += "<li>" + ingredients[i] + "</li>";
 	}
 	text += "</ul>";
 
-	document.getElementById("listHolder").innerHTML = 'This is what you need to make delicious spaghetti:<br/><br/>' + text;
+	listHolder.innerHTML = 'This is what you need to make delicious spaghetti:<br/><br/>' + text;
 }
 
+// Create input for favorite ingredient
+function addIngredient() {
+	var inputBlock = document.createElement("inputBlock");
+		inputBlock.id = "block";
+		listHolder.after(inputBlock);
+	document.getElementById("block").appendChild(ingredientInput);
+}
+
+// Update list
+function updateList() {
+	text = "<ul>";
+	for (i = 0; i < fLen; i++) {
+  	text += "<li>" + ingredients[i] +"</li>";
+	}
+	text += '<li>' + ingredientInput.value + '</li>' + "</ul>";
+
+	listHolder.innerHTML = 'This is what you need to make delicious spaghetti:<br/><br/>' + text;
+}
 
 // Create onclick function
 document.getElementById("launchMe").addEventListener("click", launchMe);
 
-function launchMe() {
+function launchMe(getReady) {
 	removeText();
 	createList();
-
+	addIngredient();
+	ingredientInput.addEventListener("blur", clickOut);
+	function clickOut() {
+    	if (ingredientInput.value !== 0) {
+        updateList();
+        }
+    }
 }
+
+
+
+
+
+
+
+
 
 
 
