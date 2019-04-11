@@ -184,38 +184,39 @@ function enter(event) {
         </div>
         <script>
 
-// Remove old text
+// Remove old text but keep first sentence
 function removeText() {
 	var oldText = document.getElementById("listHolder");
 	while (oldText.firstChild) {
     	oldText.removeChild(oldText.firstChild);
 	}
+	oldText.innerHTML = "This is what you need to make delicious spaghetti:"
 }
 
-// Create variable
-var ingredients = ["Pasta", "Tomato sauce", "Cheese"];
-var fLen = ingredients.length;
-
+// Variables
 var ingredientInput = document.createElement("input");
 	ingredientInput.setAttribute("type", "text");
 	ingredientInput.placeholder = "Choose your final ingredient";
-
 var listHolder = document.getElementById("listHolder");
 
 // Create list
-function createList() {
-	text = "<ul>";
-	for (i = 0; i < fLen; i++) {
-  	text += "<li>" + ingredients[i] + "</li>";
-	}
-	text += "</ul>";
-
-	listHolder.innerHTML = 'This is what you need to make delicious spaghetti:<br/><br/>' + text;
+function createList(){
+    var ul = document.createElement("ul");
+    	ul.id = "dynamic-list";
+    	document.getElementById("listHolder").appendChild(ul);
+	var ingredients = ["Pasta", "Tomato sauce", "Cheese"];
+	var fLen = ingredients.length;
+		for (i = 0; i < fLen; i++) {
+			var li = document.createElement("li");
+    		//li.setAttribute('id',"text");
+    		li.appendChild(document.createTextNode(ingredients[i]));
+    		ul.appendChild(li);
+    	}
 }
 
 // Create input for favorite ingredient
 function addIngredient() {
-	var inputBlock = document.createElement("inputBlock");
+	var inputBlock = document.createElement("div");
 		inputBlock.id = "block";
 		listHolder.after(inputBlock);
 	document.getElementById("block").appendChild(ingredientInput);
@@ -223,14 +224,18 @@ function addIngredient() {
 
 // Update list
 function updateList() {
-	text = "<ul>";
-	for (i = 0; i < fLen; i++) {
-  	text += "<li>" + ingredients[i] +"</li>";
-	}
-	text += '<li>' + ingredientInput.value + '</li>' + "</ul>";
-
-	listHolder.innerHTML = 'This is what you need to make delicious spaghetti:<br/><br/>' + text;
+	var ul = document.getElementById("dynamic-list");
+	var newLi = document.createElement("li");
+		newLi.appendChild(document.createTextNode(ingredientInput.value));
+		ul.appendChild(newLi);
 }
+
+// Remove input
+function removeInput() {
+    var inputBlock = document.getElementById("block");
+    inputBlock.removeChild(ingredientInput);
+}
+
 
 // Create onclick function
 document.getElementById("launchMe").addEventListener("click", launchMe);
@@ -243,23 +248,10 @@ function launchMe(getReady) {
 	function clickOut() {
     	if (ingredientInput.value !== 0) {
         updateList();
+        removeInput();
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </script>
     </div>
     <!-- END OF Part 3 -->
@@ -445,7 +437,34 @@ function launchMe(getReady) {
             </table>
         </div>
         <script>
-            // Write your code here
+
+var input = document.getElementById("searchInput");
+	input.addEventListener("onkeyup", filterTable);
+
+function filterTable() {
+  // Declare variables
+  var filter, table, tr, td, i, txtValue;
+  filter = input.value.toUpperCase();
+  table = document.getElementById("searchTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+
+
+
         </script>
     </div>
     <!-- END OF Part 4 -->
