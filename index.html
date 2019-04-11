@@ -114,7 +114,6 @@ document.getElementById("emptyRow").addEventListener("keyup", enter);
 
 // Add/delete rows
 function addNewFields() {
-
     // Delete row
     var img = document.createElement("img");
         img.id = "delete";
@@ -130,19 +129,16 @@ function addNewFields() {
     var cell3 = row.insertCell(2);
     var cell4 = row.insertCell(3);
     var cell5 = row.insertCell(4);
-
     cell1.innerHTML = inputName.value;
     cell2.innerHTML = inputPizza.value;
     cell3.innerHTML = inputSize.value;
     cell4.innerHTML = inputRemarks.value;
     cell5.appendChild(img);
-
     inputName.value = "";
     inputPizza.value = "";
     inputSize.value = "";
     inputRemarks.value = "";
 }
-
 function deleteRow(clickEvent) {
     table.deleteRow(clickEvent.target.parentNode.parentNode.rowIndex);
 }
@@ -158,9 +154,9 @@ function enter(event) {
         }
     }
 }
-
         </script>
     </div>
+
     <!-- END OF Part 2 -->
 
     <!-- Part 3: Element alterations -->
@@ -187,7 +183,45 @@ function enter(event) {
 
         </div>
         <script>
-            // Write your code here
+
+// Remove old text
+function removeText() {
+	var oldText = document.getElementById("listHolder");
+	while (oldText.firstChild) {
+    	oldText.removeChild(oldText.firstChild);
+	}
+}
+
+// Create list
+function createList() {
+	var ingredients, text, fLen, i;
+	ingredients = ["Pasta", "Tomato sauce", "Cheese"];
+	fLen = ingredients.length;
+
+	text = "<ul>";
+	for (i = 0; i < fLen; i++) {
+  	text += "<li>" + ingredients[i] + "</li>";
+	}
+	text += "</ul>";
+
+	document.getElementById("listHolder").innerHTML = 'This is what you need to make delicious spaghetti:<br/><br/>' + text;
+}
+
+
+// Create onclick function
+document.getElementById("launchMe").addEventListener("click", launchMe);
+
+function launchMe() {
+	removeText();
+	createList();
+
+}
+
+
+
+
+
+
         </script>
     </div>
     <!-- END OF Part 3 -->
