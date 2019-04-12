@@ -33,5 +33,7 @@ Remarks:
 ## Part 4: 
 
 What I learned:
-- Filter/search list: https://www.w3schools.com/howto/howto_js_filter_table.aspasp
+- Filter/search list: https://www.w3schools.com/howto/howto_js_filter_table.asp (filter only first column) and https://www.experts-exchange.com/questions/29130021/JavaScript-to-Make-a-Custom-Search-for-All-Columns-in-a-Table.html (filter all columns)
+- Create and add checkbox:
+- Prechecked checkbox: https://www.w3schools.com/jsref/prop_checkbox_checked.asp
 

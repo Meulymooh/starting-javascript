@@ -438,21 +438,24 @@ function launchMe(getReady) {
         </div>
         <script>
 
-var input = document.getElementById("searchInput");
-	input.addEventListener("onkeyup", filterTable);
+	var input = document.getElementById("searchInput");
+	input.addEventListener("keyup", filterTable);
 
+// Filtered search
 function filterTable() {
-  // Declare variables
-  var filter, table, tr, td, i, txtValue;
+  var input, filter, table, tr, td, i, txtValue;
+
+  input = document.getElementById("searchInput");
   filter = input.value.toUpperCase();
   table = document.getElementById("searchTable");
   tr = table.getElementsByTagName("tr");
 
-  // Loop through all table rows, and hide those who don't match the search query
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
+    tds = tr[i].querySelectorAll("td");
+
+    if (tds.length) {
+      txtValue = tr[i].innerText.trim();
+
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
       } else {
@@ -461,6 +464,18 @@ function filterTable() {
     }
   }
 }
+
+// Create checkboxes
+table = document.getElementById("searchTable");
+var th = table.querySelectorAll("th");
+    for (var i = 0; i < th.length; i++){
+var checkbox = document.createElement("input");
+    checkbox.setAttribute("type", "checkbox");
+    checkbox.checked = true;
+    th[i].prepend(checkbox);}
+var tr = document.querySelectorAll("tr");
+
+// Hide columns
 
 
 
