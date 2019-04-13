@@ -443,21 +443,20 @@ function launchMe(getReady) {
 
 // Filtered search
 function filterTable() {
-  var input, filter, table, tr, td, i, txtValue;
+  var input = document.getElementById("searchInput");
+  var filter = input.value.toUpperCase();
+  var table = document.getElementById("searchTable");
+  var tr = table.getElementsByTagName("tr");
 
-  input = document.getElementById("searchInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("searchTable");
-  tr = table.getElementsByTagName("tr");
+  for (var i = 0; i < tr.length; i++) {
+    var td = tr[i].querySelectorAll("td");
 
-  for (i = 0; i < tr.length; i++) {
-    tds = tr[i].querySelectorAll("td");
-
-    if (tds.length) {
-      txtValue = tr[i].innerText.trim();
+    if (td.length) {
+      var txtValue = tr[i].innerText.trim();
 
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
+        filter.style.color = "yellow";
       } else {
         tr[i].style.display = "none";
       }
@@ -469,17 +468,31 @@ function filterTable() {
 table = document.getElementById("searchTable");
 var th = table.querySelectorAll("th");
     for (var i = 0; i < th.length; i++){
-var checkbox = document.createElement("input");
-    checkbox.setAttribute("type", "checkbox");
-    checkbox.checked = true;
-    th[i].prepend(checkbox);}
-var tr = document.querySelectorAll("tr");
+		var checkbox = document.createElement("input");
+    		checkbox.setAttribute("type", "checkbox");
+    		checkbox.id = i;
+    		checkbox.checked = true;
+    		th[i].prepend(checkbox);
+			checkbox.addEventListener("change", hideColumns);
+	}
 
-// Hide columns
+// Hide one column
+function oneColumn(col_no) {
+    var rows = document.getElementById("searchTable").rows;
+    for (var row = 0; row < rows.length; row++) {
+        var cols = rows[row].cells;
+        if (col_no >= 0 && col_no < cols.length) {
+            cols[col_no].style.display = "none";
+        }
+    }
+}
 
-
-
-
+// Hide column when checkbox is unchecked
+function hideColumns(event) {
+	if (event.target.checked != true) {
+		hideShowColumns(event.target.id)
+	}
+}
         </script>
     </div>
     <!-- END OF Part 4 -->
@@ -495,7 +508,23 @@ var tr = document.querySelectorAll("tr");
             <div id="moveAnimation" class="block"></div>
         </div>
         <script>
-            // Write your code here
+
+window.addEventListener("load", slide);
+
+function slide (event) {
+	var moveAnimation = document.getElementById("moveAnimation");;
+		moveAnimation.style.left = "0";  
+
+	setTimeout(function() {;
+	moveAnimation.style.transitionDuration = "2s";	
+    moveAnimation.style.left = "100%"; 
+  }, 100);
+
+	setTimeout(function() {
+	moveAnimation.style.transitionDuration = "5s"
+    moveAnimation.style.left = "0"; 
+  }, 3000);
+}
         </script>
     </div>
     <!-- END OF Part 5 -->

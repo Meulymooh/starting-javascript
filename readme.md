@@ -34,6 +34,19 @@ Remarks:
 
 What I learned:
 - Filter/search list: https://www.w3schools.com/howto/howto_js_filter_table.asp (filter only first column) and https://www.experts-exchange.com/questions/29130021/JavaScript-to-Make-a-Custom-Search-for-All-Columns-in-a-Table.html (filter all columns)
-- Create and add checkbox:
+- Create and add checkbox: 
 - Prechecked checkbox: https://www.w3schools.com/jsref/prop_checkbox_checked.asp
+- Change event: https://developer.mozilla.org/fr/docs/Web/Events/change
+
+Remarks:
+Filtering the table and adding checkboxes was relatively ok but I had a hard time making columns disappear when the boxes were unchecked. I needed some guidance and explanation. It was also very hard to find info with pure javascript. For this kind of things, almost everyone uses jquery.
+
+## Part 5:
+- Transition: https://www.w3schools.com/jsref/prop_style_transition.asp
+- Transform: https://www.w3schools.com/jsref/prop_style_transform.asp
+- Timeout: https://www.w3schools.com/js/js_timing.asp
+- Load event: https://www.w3schools.com/jsref/event_onload.asp
+
+Remarks:
+Maybe the easiest part of the exercise. Like a breath of fresh air after struggling a lot before!
 
