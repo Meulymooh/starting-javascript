@@ -509,22 +509,26 @@ function hideColumns(event) {
         </div>
         <script>
 
+// Trigger animation when page is loaded
 window.addEventListener("load", slide);
 
+// Define animation
 function slide (event) {
-	var moveAnimation = document.getElementById("moveAnimation");;
+	var moveAnimation = document.getElementById("moveAnimation");
 		moveAnimation.style.left = "0";  
-
 	setTimeout(function() {;
 	moveAnimation.style.transitionDuration = "2s";	
     moveAnimation.style.left = "100%"; 
   }, 100);
-
 	setTimeout(function() {
 	moveAnimation.style.transitionDuration = "5s"
     moveAnimation.style.left = "0"; 
   }, 3000);
 }
+
+// Repeat animation indefinitely
+setInterval("slide()", 8000);
+
         </script>
     </div>
     <!-- END OF Part 5 -->
