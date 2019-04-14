@@ -544,7 +544,14 @@ setInterval("slide()", 8000);
             <div id="followMouse" class="block"></div>
         </div>
         <script>
-            // Write your code here
+
+document.addEventListener("mousemove", mouseMove)
+
+    function mouseMove(event) { 
+        var x = event.clientX; 
+        document.getElementById("followMouse").style.marginLeft  = x + "px";        
+    }
+
         </script>
     </div>
     <!-- END OF Part 6 -->

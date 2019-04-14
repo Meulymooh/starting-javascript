@@ -30,7 +30,7 @@ Remarks:
 - First try: I cheated big time. Instead of "updating" the list, I actually "recreated" it with the extra ingredient in it. My list was created after I read about "Looping Array Elements" (https://www.w3schools.com/js/js_arrays.asp), but I didn't manage to find a clean way to update the list. 
 - Second try: after a little bit of guidance in terms of where to look for information, I rewrote my functions "createList" and  "updateList". I also added "removeInput" (it was still there at first try).
 
-## Part 4: 
+## Part 4
 
 What I learned:
 - Filter/search list: https://www.w3schools.com/howto/howto_js_filter_table.asp (filter only first column) and https://www.experts-exchange.com/questions/29130021/JavaScript-to-Make-a-Custom-Search-for-All-Columns-in-a-Table.html (filter all columns)
@@ -41,12 +41,30 @@ What I learned:
 Remarks:
 Filtering the table and adding checkboxes was relatively ok but I had a hard time making columns disappear when the boxes were unchecked. I needed some guidance and explanation. It was also very hard to find info with pure javascript. For this kind of things, almost everyone uses jquery.
 
-## Part 5:
+## Part 5
+
+What I learned:
 - Transition: https://www.w3schools.com/jsref/prop_style_transition.asp
 - Transform: https://www.w3schools.com/jsref/prop_style_transform.asp
-- Timeout: https://www.w3schools.com/js/js_timing.asp
+- Timeout (for duration): https://www.w3schools.com/js/js_timing.asp
+- Set interval (for repetition): https://www.w3schools.com/jsref/met_win_setinterval.asp
 - Load event: https://www.w3schools.com/jsref/event_onload.asp
 
 Remarks:
 Maybe the easiest part of the exercise. Like a breath of fresh air after struggling a lot before!
+
+## Part 6
+
+What I learned:
+- Mousemove event: https://www.w3schools.com/jsref/event_onmousemove.asp
+- Clientx: https://www.w3schools.com/jsref/event_clientx.asp
+
+Remarks:
+After trying a hundred things with long and complicated code, I just styling + client x. I didn't manage to stop the block following the cursor out of the parent div, though.
+
+## Part 7
+
+What I learned:
+
+Remarks:
 
