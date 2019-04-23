@@ -60,11 +60,13 @@ What I learned:
 - Clientx: https://www.w3schools.com/jsref/event_clientx.asp
 
 Remarks:
-After trying a hundred things with long and complicated code, I just styling + client x. I didn't manage to stop the block following the cursor out of the parent div, though.
+After trying a hundred things with long and complicated code, I just add styling + clientx. I didn't manage to stop the block following the cursor out of the parent div, though. I cheated (a little) because I'm just increasing the left margin of the moving block... But it works well. :-)
 
 ## Part 7
 
 What I learned:
+- Sliders: https://www.w3schools.com/howto/howto_js_rangeslider.asp
+- Change event: https://www.w3schools.com/jsref/event_onchange.asp
 
 Remarks:
 

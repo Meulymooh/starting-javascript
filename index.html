@@ -561,14 +561,79 @@ document.addEventListener("mousemove", mouseMove)
         <div class="col-12 bg-white shadow-sm p-4 mx-auto mt-4">
             <h3>Part 7: Sliiiiiders</h3>
             <p>Recreate this very intuitive user interface. Insert the DOM nodes (html elements) using document.createElement();</p>
-            <img src="../input.gif" alt="Interface" />
+            <img src="input.gif" alt="Interface" />
             <hr/>
             <br/>
 
             <div id="target"></div>
         </div>
         <script>
-            // Write your code here
+
+var target = document.getElementById('target');
+	
+var instruction = document.createElement('p');
+	instruction.innerHTML = 'Enter your first name:';
+	target.appendChild(instruction);
+
+var letterInput = document.createElement('input');
+	letterInput.setAttribute("type", "text");
+	letterInput.id = 'letterInput';
+	target.appendChild(letterInput);
+
+	letterInput.addEventListener("focus", show);
+
+var outputSlider = document.createElement("input");
+	outputSlider.setAttribute('type', 'text');
+	outputSlider.id = "outputSlider";
+	outputSlider.style.display = "none";
+	outputSlider.style.border = "0";
+	outputSlider.className = "mt-3 border-dark";
+	outputSlider.innerHTML = outputSlider.value;
+	target.appendChild(outputSlider);
+
+var sliderContainer = document.createElement("span");
+	sliderContainer.id = "sliderContainer";
+	sliderContainer.className = "mt-3";
+	sliderContainer.style.backgroundColor = "grey";
+	sliderContainer.style.height = "10px";
+	sliderContainer.style.width = "300px";
+	sliderContainer.style.display = "none";
+	target.appendChild(sliderContainer);
+
+var sliderLetter = document.createElement('input');
+	sliderLetter.setAttribute('type', 'range');
+	sliderLetter.className = 'range-slider-handle';
+	sliderLetter.id = 'sliderLetter';
+	sliderLetter.min = 0;
+	sliderLetter.max = 25;
+	sliderLetter.value = 0;
+	sliderLetter.style.width = "300px";
+	sliderLetter.style.height = "5px";
+	sliderLetter.style.display = "none";
+	sliderLetter.innerHTML = sliderLetter.value;
+	sliderContainer.appendChild(sliderLetter);
+	sliderContainer.addEventListener("change", updateValue);
+
+var addLetter = document.createElement('button');
+	addLetter.id = 'addLetter';
+	addLetter.className = 'btn btn-secondary mt-3';
+	addLetter.style.display = 'block';
+	addLetter.innerHTML = 'Add letter';
+	addLetter.style.display = "none";
+	target.appendChild(addLetter);
+
+function show(event) {
+	sliderContainer.style.display = "block";
+	sliderLetter.style.display = "block";
+	outputSlider.style.display = "block";
+	addLetter.style.display = "block";
+}
+
+function updateValue(event) {
+	outputSlider.value = String.fromCharCode(parseInt(sliderLetter.value) + 65);
+}
+
+
         </script>
     </div>
     <!-- END OF Part 7 -->
@@ -584,7 +649,11 @@ document.addEventListener("mousemove", mouseMove)
             <div id="target2"></div>
         </div>
         <script>
-            // You can put at most one line here
+
+
+
+
+
         </script>
     </div>
     <!-- END OF Part 8 -->
