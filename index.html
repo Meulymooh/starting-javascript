@@ -570,11 +570,13 @@ document.addEventListener("mousemove", mouseMove)
         <script>
 
 var target = document.getElementById('target');
-	
+
+// Instruction
 var instruction = document.createElement('p');
 	instruction.innerHTML = 'Enter your first name:';
 	target.appendChild(instruction);
 
+// Input for name
 var letterInput = document.createElement('input');
 	letterInput.setAttribute("type", "text");
 	letterInput.id = 'letterInput';
@@ -582,55 +584,73 @@ var letterInput = document.createElement('input');
 
 	letterInput.addEventListener("focus", show);
 
-var outputSlider = document.createElement("input");
-	outputSlider.setAttribute('type', 'text');
-	outputSlider.id = "outputSlider";
-	outputSlider.style.display = "none";
-	outputSlider.style.border = "0";
-	outputSlider.className = "mt-3 border-dark";
-	outputSlider.innerHTML = outputSlider.value;
-	target.appendChild(outputSlider);
+// Create slider and its output
+function addSlider() {
 
-var sliderContainer = document.createElement("span");
-	sliderContainer.id = "sliderContainer";
-	sliderContainer.className = "mt-3";
-	sliderContainer.style.backgroundColor = "grey";
-	sliderContainer.style.height = "10px";
-	sliderContainer.style.width = "300px";
-	sliderContainer.style.display = "none";
-	target.appendChild(sliderContainer);
+    // Slider + container
+    var letterSpan = document.createElement("span");
+        letterSpan.id = "letterSpan";
+        letterSpan.className = "mt-3";
+        letterSpan.style.display = "block";
+        target.appendChild(letterSpan);
 
-var sliderLetter = document.createElement('input');
-	sliderLetter.setAttribute('type', 'range');
-	sliderLetter.className = 'range-slider-handle';
-	sliderLetter.id = 'sliderLetter';
-	sliderLetter.min = 0;
-	sliderLetter.max = 25;
-	sliderLetter.value = 0;
-	sliderLetter.style.width = "300px";
-	sliderLetter.style.height = "5px";
-	sliderLetter.style.display = "none";
-	sliderLetter.innerHTML = sliderLetter.value;
-	sliderContainer.appendChild(sliderLetter);
-	sliderContainer.addEventListener("change", updateValue);
+    // Letter output
+    var outputSlider = document.createElement("input");
+	   outputSlider.setAttribute('type', 'text');
+	   outputSlider.id = "outputSlider";
+	   outputSlider.style.border = "0";
+        outputSlider.style.width = "25px";
+	   outputSlider.innerHTML = outputSlider.value;
+	   letterSpan.appendChild(outputSlider);
 
+    // Slider
+    var sliderContainer = document.createElement("span");
+	   sliderContainer.id = "sliderContainer";
+	   sliderContainer.style.backgroundColor = "grey";
+	   sliderContainer.style.height = "10px";
+	   sliderContainer.style.width = "300px";
+	   letterSpan.appendChild(sliderContainer);
+
+    var sliderLetter = document.createElement('input');
+	   sliderLetter.setAttribute('type', 'range');
+	   sliderLetter.className = 'range-slider-handle';
+	   sliderLetter.id = 'sliderLetter';
+	   sliderLetter.min = -1;
+	   sliderLetter.max = 25;
+	   sliderLetter.value = -1;
+	   sliderLetter.style.width = "300px";
+	   sliderLetter.style.height = "5px";
+	   sliderLetter.innerHTML = sliderLetter.value;
+	   sliderContainer.appendChild(sliderLetter);
+	   sliderContainer.addEventListener("change", updateValue);
+
+       // Update letter when using the slider
+    function updateValue(event) {
+        outputSlider.value = String.fromCharCode(parseInt(sliderLetter.value) + 65);
+        letterInput.value += String.fromCharCode(parseInt(sliderLetter.value) + 65);
+    }
+}
+
+// Button
 var addLetter = document.createElement('button');
 	addLetter.id = 'addLetter';
 	addLetter.className = 'btn btn-secondary mt-3';
 	addLetter.style.display = 'block';
 	addLetter.innerHTML = 'Add letter';
-	addLetter.style.display = "none";
+    addLetter.style.display = "block";
 	target.appendChild(addLetter);
 
+    addLetter.addEventListener('click', addNewLetter);
+
+// Show slider when click in name field
 function show(event) {
-	sliderContainer.style.display = "block";
-	sliderLetter.style.display = "block";
-	outputSlider.style.display = "block";
-	addLetter.style.display = "block";
+    addSlider();
 }
 
-function updateValue(event) {
-	outputSlider.value = String.fromCharCode(parseInt(sliderLetter.value) + 65);
+
+// Add new letter
+function addNewLetter() {
+    addSlider();
 }
 
 
