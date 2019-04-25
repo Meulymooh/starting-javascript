@@ -70,12 +70,17 @@ What I learned:
 - Focus event: https://www.w3schools.com/jsref/event_onfocus.asp
 
 Remarks:
-Most of the exercise was relatively easy except for three things: 
+Most of the exercise was relatively easy, except for three things: 
 - My slider didn't show the "A" letter immediately and I had to set it (looks a bit like a hack, though).
-- It took me a while to figure out how to add a new letter in the input field. At first every new slider was changing the first letter.
-- At some point, every time I moved the slider, it added a new letter in the main input field.
+- It took me a long while to figure out how to add a new letter in the input field. At first every new slider was only changing the first and only letter in the input field, not adding a new one.
+- At some point, every time I moved the slider, it added a new letter in the main input field. I couldn't change the letter, just add a new one.
 
 ## Part 8
 
+What I learned:
+- ReplaceWith() (even though it didn't work): https://usefulangle.com/post/82/pure-javascript-replace-element
+- Call a function inside another function: https://stackoverflow.com/questions/4524877/how-do-i-call-a-function-inside-of-another-function/4524890
 
-
+Remarks:
+- I tried clone() and replaceWith() => no success.
+- I got help from Madelina who explained me that I had to make a whole function out of part 7 and call it again in part 8. Same concept is explained in Stakoverflow message indicated above.

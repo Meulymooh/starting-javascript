@@ -569,19 +569,22 @@ document.addEventListener("mousemove", mouseMove)
         </div>
         <script>
 
-var target = document.getElementById('target');
+// var target = document.getElementById('target');
+createSlider("target");
+
+function createSlider(obj) {
+var container = document.getElementById(obj);
 
 // Instruction
 var instruction = document.createElement('p');
 	instruction.innerHTML = 'Enter your first name:';
-	target.appendChild(instruction);
+	container.appendChild(instruction);
 
 // Input for name
 var letterInput = document.createElement('input');
 	letterInput.setAttribute("type", "text");
 	letterInput.id = 'letterInput';
-	target.appendChild(letterInput);
-
+	container.appendChild(letterInput);
 	letterInput.addEventListener("focus", show);
 
 // Create slider and its output
@@ -592,7 +595,7 @@ function addSlider() {
         letterSpan.id = "letterSpan";
         letterSpan.className = "mt-3";
         letterSpan.style.display = "block";
-        target.appendChild(letterSpan);
+        container.appendChild(letterSpan);
 
     // Letter output
     var outputSlider = document.createElement("input");
@@ -641,7 +644,7 @@ var addLetter = document.createElement('button');
 	addLetter.style.display = 'block';
 	addLetter.innerHTML = 'Add letter';
     addLetter.style.display = "block";
-	target.appendChild(addLetter);
+	container.appendChild(addLetter);
     addLetter.addEventListener('click', addNewLetter);
 
 // Show slider when click in name field
@@ -649,12 +652,11 @@ function show(event) {
     addSlider();
 }
 
-
 // Add new letter
 function addNewLetter() {
     addSlider();
 }
-
+}
 
         </script>
     </div>
@@ -672,9 +674,7 @@ function addNewLetter() {
         </div>
         <script>
 
-
-
-
+createSlider("target2");
 
         </script>
     </div>
