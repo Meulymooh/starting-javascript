@@ -615,19 +615,22 @@ function addSlider() {
 	   sliderLetter.setAttribute('type', 'range');
 	   sliderLetter.className = 'range-slider-handle';
 	   sliderLetter.id = 'sliderLetter';
-	   sliderLetter.min = -1;
+	   sliderLetter.min = 0;
 	   sliderLetter.max = 25;
-	   sliderLetter.value = -1;
+	   sliderLetter.value = 0;
 	   sliderLetter.style.width = "300px";
 	   sliderLetter.style.height = "5px";
 	   sliderLetter.innerHTML = sliderLetter.value;
+       outputSlider.value = "A";
 	   sliderContainer.appendChild(sliderLetter);
 	   sliderContainer.addEventListener("change", updateValue);
+       var previousLetterInputValue = letterInput.value;
+       letterInput.value += "A";
 
-       // Update letter when using the slider
+    // Update letter when using the slider
     function updateValue(event) {
         outputSlider.value = String.fromCharCode(parseInt(sliderLetter.value) + 65);
-        letterInput.value += String.fromCharCode(parseInt(sliderLetter.value) + 65);
+        letterInput.value = previousLetterInputValue + String.fromCharCode(parseInt(sliderLetter.value) + 65);
     }
 }
 
@@ -639,7 +642,6 @@ var addLetter = document.createElement('button');
 	addLetter.innerHTML = 'Add letter';
     addLetter.style.display = "block";
 	target.appendChild(addLetter);
-
     addLetter.addEventListener('click', addNewLetter);
 
 // Show slider when click in name field

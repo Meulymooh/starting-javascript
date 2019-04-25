@@ -67,6 +67,15 @@ After trying a hundred things with long and complicated code, I just add styling
 What I learned:
 - Sliders: https://www.w3schools.com/howto/howto_js_rangeslider.asp
 - Change event: https://www.w3schools.com/jsref/event_onchange.asp
+- Focus event: https://www.w3schools.com/jsref/event_onfocus.asp
 
 Remarks:
+Most of the exercise was relatively easy except for three things: 
+- My slider didn't show the "A" letter immediately and I had to set it (looks a bit like a hack, though).
+- It took me a while to figure out how to add a new letter in the input field. At first every new slider was changing the first letter.
+- At some point, every time I moved the slider, it added a new letter in the main input field.
+
+## Part 8
+
+
 
